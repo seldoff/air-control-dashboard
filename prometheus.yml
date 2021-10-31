@@ -1,0 +1,6 @@
+﻿scrape_configs:
+  - job_name: 'aircontrol'
+    metrics_path: '/metrics'
+    scrape_interval: 45s
+    static_configs:
+      - targets: ['host.docker.internal:5000']
