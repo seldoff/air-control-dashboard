@@ -1,8 +1,4 @@
-﻿volumes:
-  prometheus_data: {}
-  grafana_data: {}
-
-services:
+﻿services:
   prometheus:
     image: prom/prometheus
     command: --config.file=/etc/prometheus/prometheus.yml
@@ -10,7 +6,7 @@ services:
       - 9090:9090
     volumes:
       - ./prometheus.yml:/etc/prometheus/prometheus.yml
-      - prometheus_data:/prometheus
+      - ./docker_data/prometheus:/prometheus
 
   grafana:
     image: grafana/grafana
@@ -19,4 +15,4 @@ services:
     ports:
       - 3000:3000
     volumes:
-      - grafana_data:/var/lib/grafana
+      - ./docker_data/grafana:/var/lib/grafana
