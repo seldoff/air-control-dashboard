@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 
 namespace AirControlDashboard
 {
@@ -24,6 +25,7 @@ namespace AirControlDashboard
             services.AddMetrics(AppMetrics.CreateDefaultBuilder().Build());
             services.Configure<AirControlOptions>(Configuration.GetSection("AirControl"));
             services.AddHostedService<AirControlService>();
+            services.AddLogging(b => b.AddSimpleConsole(o => o.TimestampFormat = "HH:mm:ss "));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
